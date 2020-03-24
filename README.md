@@ -3,8 +3,7 @@
 [![Build Status](https://travis-ci.org/TheDoctor0/laravel-mailjet-driver.svg?branch=master)](https://travis-ci.org/TheDoctor0/laravel-mailjet-driver)
 [![Packagist](https://img.shields.io/packagist/v/TheDoctor0/laravel-mailjet-driver.svg)](https://packagist.org/packages/TheDoctor0/laravel-mailjet-driver)
 [![Packagist](https://img.shields.io/packagist/dt/TheDoctor0/laravel-mailjet-driver.svg)](https://packagist.org/packages/TheDoctor0/laravel-mailjet-driver)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/TheDoctor0/laravel-mailjet-driver/blob/master/LICENSE.md)
-[![Documentation](https://img.shields.io/badge/documentation-gh--pages-blue.svg)](https://TheDoctor0.github.io/laravel-mailjet-driver/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/TheDoctor0/laravel-mailjet-driver/blob/master/LICENSE.md)
 
 Laravel mail driver package for [Mailjet](https://www.mailjet.com/). It also serves as a wrapper for [Mailjet API v3](https://github.com/mailjet/mailjet-apiv3-php).
 
@@ -110,11 +109,11 @@ You can add full configuration for [MailjetClient](https://github.com/mailjet/ma
 ## API Wrapper usage
 
 In order to API wrapper from this package, you first need to import Mailjet Facade in your code:
+```
+use Mailjet\LaravelMailjet\Facades\Mailjet;
+```
 
-    use Mailjet\LaravelMailjet\Facades\Mailjet;
-
-
-Then, in your code you can use one of the methods available in the **MailjetServices** class.
+Then you can use one of the methods available in the **MailjetServices** class.
 
 #### Low level API methods:
 
