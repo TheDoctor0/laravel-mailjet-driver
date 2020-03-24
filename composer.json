@@ -1,11 +1,16 @@
 {
-    "name": "mailjet/laravel-mailjet",
-    "description": "Laravel package for Mailjet API V3 and Laravel Mailjet Mail Transport",
-    "keywords": ["framework", "laravel", "mailjet", "mailjet wrapper", "transport", "mailjet API"],
+    "name": "thedoctor0/laravel-mailjet-driver",
+    "description": "Laravel mail package for Mailjet and wrapper for its API.",
+    "keywords": ["framework", "laravel", "mailjet", "wrapper", "transport", "mailjet API", "driver"],
     "license": "MIT",
     "type": "library",
-    "homepage": "https://github.com/mailjet/laravel-mailjet",
+    "homepage": "https://github.com/TheDoctor0/laravel-mailjet-driver",
     "authors": [
+        {
+            "name": "Dawid Janik",
+            "email": "dawid.janik95@gmail.com",
+            "homepage": "https://github.com/TheDoctor0"
+        },
         {
             "name": "Gaetan DELBART",
             "email": "gaetan@moltencore.io",
@@ -36,7 +41,23 @@
     },
     "autoload": {
         "psr-4": {
-            "Mailjet\\LaravelMailjet\\": "src/"
+            "Mailjet\\LaravelMailjet\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mailjet\\LaravelMailjet\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mailjet\\LaravelMailjet\\MailjetServiceProvider",
+                "Mailjet\\LaravelMailjet\\MailjetMailServiceProvider"
+            ],
+            "aliases": {
+                "Mailjet": "Mailjet\\LaravelMailjet\\Facades\\Mailjet"
+            }
         }
     },
     "config": {
