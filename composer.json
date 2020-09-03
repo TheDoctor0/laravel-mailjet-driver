@@ -1,6 +1,6 @@
 {
     "name": "thedoctor0/laravel-mailjet-driver",
-    "description": "Laravel mail driver package for Mailjet and wrapper for its API. Supports Laravel 5.x, 6.x and 7.x.",
+    "description": "Laravel mail driver package for Mailjet and wrapper for its API. Supports Laravel 5.x, 6.x, 7.x. and 8.x",
     "keywords": ["framework", "laravel", "mailjet", "wrapper", "transport", "mailjet API", "driver"],
     "license": "MIT",
     "type": "library",
@@ -29,7 +29,7 @@
         }
     ],
     "require": {
-        "laravel/framework": "~5.1|^6.0|^7.0",
+        "laravel/framework": "~5.1|^6.0|^7.0|^8.0",
         "mailjet/mailjet-apiv3-php": "^1.2",
         "mailjet/mailjet-swiftmailer": "^2.0"
     },
