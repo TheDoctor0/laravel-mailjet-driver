@@ -13,28 +13,6 @@ First, include the package in your dependencies:
 ```
 composer require thedoctor0/laravel-mailjet-driver
 ```
-    
-If you are using Laravel before version 5.5 that supports Package Auto-Discovery, you need to add provider and alias manually to **config/app.php**.
-* In the providers array:
-
-```php
-'providers' => [
-    ...
-    Mailjet\LaravelMailjet\MailjetServiceProvider::class,
-    Mailjet\LaravelMailjet\MailjetMailServiceProvider::class,
-    ...
-]
-```
-
-* In the aliases array:
-
-```php
-'aliases' => [
-    ...
-    'Mailjet' => Mailjet\LaravelMailjet\Facades\Mailjet::class,
-    ...
-]
-```
 
 ## Configuration
 
@@ -58,7 +36,7 @@ Add section to the **config/services.php** file:
 ],
 ```
 
-Make sure that in **config/mail.php** as mail sender address you are using a authorised email address configured on your Mailjet account. 
+Make sure that in **config/mail.php** as mail sender address you are using an authorised email address configured on your Mailjet account. 
 
 Your available Mailjet email addresses and domains can be managed [here](https://app.mailjet.com/account/sender).
 
@@ -79,7 +57,8 @@ For Laravel 7+ you also need to specify new available mail driver in **config/ma
 You can add full configuration for [MailjetClient](https://github.com/mailjet/mailjet-apiv3-php) to the **config/services.php** file.
 
 * `transactional`: settings to sendAPI client
-* `common`: setting to MailjetClient accessible throught the Facade Mailjet
+* `common`: setting to MailjetClient accessible through the Facade Mailjet
+* `v4`: setting used for some DataProvider`s
 
 ```php
 'mailjet' => [
@@ -102,6 +81,15 @@ You can add full configuration for [MailjetClient](https://github.com/mailjet/ma
             'call' => true,
             'secured' => true
         ],
+    ],
+    'v4' => [
+        'call' => true,
+        'options' => [
+            'url' => 'api.mailjet.com',
+            'version' => 'v4',
+            'call' => true,
+            'secured' => true
+        ]
     ],
 ],
 ```
