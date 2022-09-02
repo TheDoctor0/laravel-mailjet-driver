@@ -9,9 +9,14 @@ Laravel mail driver package for [Mailjet](https://www.mailjet.com/). It also ser
 
 ## Installation
 
-First, include the package in your dependencies:
+For Laravel 9.x which also requires Symfony Mailer:
 ```
-composer require thedoctor0/laravel-mailjet-driver
+composer require thedoctor0/laravel-mailjet-driver symfony/http-client
+```
+
+In other cases:
+```
+composer require thedoctor0/laravel-mailjet-driver:1.0.4
 ```
 
 ## Configuration
