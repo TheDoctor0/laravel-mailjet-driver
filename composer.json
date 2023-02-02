@@ -1,6 +1,6 @@
 {
     "name": "thedoctor0/laravel-mailjet-driver",
-    "description": "Laravel mail driver package for Mailjet and wrapper for its API. Supports Laravel 5.5+, 6.x, 7.x, 8.x and 9.x",
+    "description": "Laravel mail driver package for Mailjet and wrapper for its API",
     "keywords": [
         "framework",
         "laravel",
