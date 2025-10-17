@@ -115,7 +115,7 @@ class MailjetService implements MailjetServiceContract
      * @return \Mailjet\Response
      * @throws \Mailjet\LaravelMailjet\Exception\MailjetException
      */
-    public function getAllLists(array $filters = null): Response
+    public function getAllLists(?array $filters = null): Response
     {
         $response = $this->client->get(Resources::$Contactslist, ['filters' => $filters]);
 
@@ -153,7 +153,7 @@ class MailjetService implements MailjetServiceContract
      * @return \Mailjet\Response
      * @throws \Mailjet\LaravelMailjet\Exception\MailjetException
      */
-    public function getListRecipients(array $filters = null): Response
+    public function getListRecipients(?array $filters = null): Response
     {
         $response = $this->client->get(Resources::$Listrecipient, ['filters' => $filters]);
 
