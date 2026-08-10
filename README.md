@@ -3,7 +3,6 @@
 [![Tests](https://github.com/TheDoctor0/laravel-mailjet-driver/actions/workflows/tests.yml/badge.svg)](https://github.com/TheDoctor0/laravel-mailjet-driver/actions/workflows/tests.yml)
 [![Packagist](https://img.shields.io/packagist/v/TheDoctor0/laravel-mailjet-driver.svg)](https://packagist.org/packages/TheDoctor0/laravel-mailjet-driver)
 [![Packagist](https://img.shields.io/packagist/dt/TheDoctor0/laravel-mailjet-driver.svg)](https://packagist.org/packages/TheDoctor0/laravel-mailjet-driver)
-[![PHP](https://img.shields.io/packagist/dependency-v/TheDoctor0/laravel-mailjet-driver/php.svg)](https://packagist.org/packages/TheDoctor0/laravel-mailjet-driver)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/TheDoctor0/laravel-mailjet-driver/blob/master/LICENSE.md)
 
 A Laravel mail driver for [Mailjet](https://www.mailjet.com/) that also wraps the
