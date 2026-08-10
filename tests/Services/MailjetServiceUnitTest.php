@@ -59,6 +59,60 @@ class MailjetServiceUnitTest extends TestCase
         $this->assertSame($this->client, $this->service->getClient());
     }
 
+    public function testSendEmailPostsToTheSendApiV31(): void
+    {
+        $response = $this->successResponse();
+
+        $this->client->shouldReceive('post')
+            ->once()
+            ->with(\Mailjet\Resources::$Email, ['body' => ['Messages' => []]], ['version' => 'v3.1'])
+            ->andReturn($response);
+
+        $this->assertSame($response, $this->service->sendEmail(['Messages' => []]));
+    }
+
+    public function testSendEmailAllowsOverridingOptions(): void
+    {
+        $response = $this->successResponse();
+
+        $this->client->shouldReceive('post')
+            ->once()
+            ->with(\Mailjet\Resources::$Email, ['body' => []], ['version' => 'v3'])
+            ->andReturn($response);
+
+        $this->assertSame($response, $this->service->sendEmail([], ['version' => 'v3']));
+    }
+
+    public function testSendEmailThrowsOnFailure(): void
+    {
+        $this->client->shouldReceive('post')->andReturn($this->failureResponse());
+
+        $this->expectException(MailjetException::class);
+
+        $this->service->sendEmail(['Messages' => []]);
+    }
+
+    public function testSendSmsPostsToTheSmsApiV4(): void
+    {
+        $response = $this->successResponse();
+
+        $this->client->shouldReceive('post')
+            ->once()
+            ->with(\Mailjet\Resources::$SmsSend, ['body' => ['From' => 'x', 'To' => '+48', 'Text' => 'hi']], ['version' => 'v4'])
+            ->andReturn($response);
+
+        $this->assertSame($response, $this->service->sendSms(['From' => 'x', 'To' => '+48', 'Text' => 'hi']));
+    }
+
+    public function testSendSmsThrowsOnFailure(): void
+    {
+        $this->client->shouldReceive('post')->andReturn($this->failureResponse());
+
+        $this->expectException(MailjetException::class);
+
+        $this->service->sendSms(['From' => 'x', 'To' => '+48', 'Text' => 'hi']);
+    }
+
     #[DataProvider('calls')]
     public function testMethodReturnsResponseOnSuccess(
         string $method,
