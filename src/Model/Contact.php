@@ -51,7 +51,9 @@ class Contact extends Model
     {
         $result = [
             self::EMAIL_KEY => $this->email,
-            self::PROPERTIES_KEY => array_filter($this->optionalProperties)
+            self::PROPERTIES_KEY => array_filter($this->optionalProperties, static function ($value) {
+                return $value !== null;
+            })
         ];
 
         if ($this->action !== null) {
