@@ -242,6 +242,52 @@ class MailjetService implements MailjetServiceContract
     }
 
     /**
+     * Send transactional email(s) through the Send API v3.1.
+     * https://dev.mailjet.com/email/guides/send-api-v31/
+     *
+     * @param array $body    Request body - the 'Messages' array is mandatory.
+     * @param array $options Additional client options, e.g. ['version' => 'v3'] for the legacy Send API.
+     *
+     * @return \Mailjet\Response
+     * @throws \Mailjet\LaravelMailjet\Exception\MailjetException
+     */
+    public function sendEmail(array $body, array $options = []): Response
+    {
+        $options += ['version' => 'v3.1'];
+
+        $response = $this->client->post(Resources::$Email, ['body' => $body], $options);
+
+        if (! $response->success()) {
+            throw new MailjetException(0, 'MailjetService:sendEmail() failed', $response);
+        }
+
+        return $response;
+    }
+
+    /**
+     * Send an SMS through the SMS API (v4).
+     * https://dev.mailjet.com/sms/guides/send-sms-api/
+     *
+     * Requires an SMS API bearer token: new MailjetService($token, '', true, ['url' => 'api.mailjet.com'])
+     * or configure it via services.mailjet as documented by Mailjet.
+     *
+     * @param array $body Request body - 'From', 'To' and 'Text' are mandatory.
+     *
+     * @return \Mailjet\Response
+     * @throws \Mailjet\LaravelMailjet\Exception\MailjetException
+     */
+    public function sendSms(array $body): Response
+    {
+        $response = $this->client->post(Resources::$SmsSend, ['body' => $body], ['version' => 'v4']);
+
+        if (! $response->success()) {
+            throw new MailjetException(0, 'MailjetService:sendSms() failed', $response);
+        }
+
+        return $response;
+    }
+
+    /**
      * Retrieve Mailjet client.
      *
      * @return \Mailjet\Client
