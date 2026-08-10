@@ -33,7 +33,7 @@ class TemplateService implements TemplateServiceContract
      * @return array
      * @throws \Mailjet\LaravelMailjet\Exception\MailjetException
      */
-    public function getAll(array $filters = null): array
+    public function getAll(?array $filters = null): array
     {
         $response = $this->mailjet->get(Resources::$Template, ['filters' => $filters]);
 

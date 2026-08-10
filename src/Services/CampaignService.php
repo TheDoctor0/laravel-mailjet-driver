@@ -30,7 +30,7 @@ class CampaignService implements CampaignContract
      * @return array
      * @throws \Mailjet\LaravelMailjet\Exception\MailjetException
      */
-    public function getAllCampaigns(array $filters = null): array
+    public function getAllCampaigns(?array $filters = null): array
     {
         $response = $this->mailjet->get(Resources::$Campaign, ['filters' => $filters]);
 

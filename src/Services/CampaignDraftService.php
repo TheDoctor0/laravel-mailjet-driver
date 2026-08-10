@@ -31,7 +31,7 @@ class CampaignDraftService implements CampaignDraftContract
      * @return array
      * @throws \Mailjet\LaravelMailjet\Exception\MailjetException
      */
-    public function getAllCampaignDrafts(array $filters = null): array
+    public function getAllCampaignDrafts(?array $filters = null): array
     {
         $response = $this->mailjet->get(Resources::$Campaigndraft, ['filters' => $filters]);
 

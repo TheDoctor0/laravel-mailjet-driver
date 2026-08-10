@@ -6,6 +6,7 @@ namespace Mailjet\LaravelMailjet\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Mailjet\LaravelMailjet\Services\MailjetService;
+use Mailjet\LaravelMailjet\Exception\MailjetException;
 use Mailjet\LaravelMailjet\Contracts\MailjetServiceContract;
 
 class MailjetClientServiceProvider extends ServiceProvider
@@ -37,6 +38,10 @@ class MailjetClientServiceProvider extends ServiceProvider
             $config = $this->app['config']->get('services.mailjet', []);
             $call = $this->app['config']->get('services.mailjet.common.call', true);
             $options = $this->app['config']->get('services.mailjet.common.options', []);
+
+            if (empty($config['key']) || empty($config['secret'])) {
+                throw new MailjetException(0, 'Mailjet API credentials are not configured. Please set services.mailjet.key and services.mailjet.secret.');
+            }
 
             return new MailjetService($config['key'], $config['secret'], $call, $options);
         });

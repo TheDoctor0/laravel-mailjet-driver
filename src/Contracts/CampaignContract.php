@@ -8,7 +8,7 @@ use Mailjet\LaravelMailjet\Model\Campaign;
 
 interface CampaignContract
 {
-    public function getAllCampaigns(array $filters = null);
+    public function getAllCampaigns(?array $filters = null);
 
     public function findByCampaignId(string $id);
 

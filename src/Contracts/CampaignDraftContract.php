@@ -8,7 +8,7 @@ use Mailjet\LaravelMailjet\Model\CampaignDraft;
 
 interface CampaignDraftContract
 {
-    public function getAllCampaignDrafts(array $filters = null);
+    public function getAllCampaignDrafts(?array $filters = null);
 
     public function findByCampaignDraftId(string $id);
 

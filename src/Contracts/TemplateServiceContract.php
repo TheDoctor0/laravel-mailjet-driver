@@ -8,7 +8,7 @@ use Mailjet\LaravelMailjet\Model\Template;
 
 interface TemplateServiceContract
 {
-    public function getAll(array $filters = null): array;
+    public function getAll(?array $filters = null): array;
 
     public function get(string $id): array;
 
