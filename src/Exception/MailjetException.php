@@ -10,17 +10,17 @@ use \Mailjet\Response;
 class MailjetException extends \Exception
 {
     /**
-     * @var string
+     * @var string|null
      */
     private $errorInfo;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $errorMessage;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $errorIdentifier;
 
@@ -62,25 +62,25 @@ class MailjetException extends \Exception
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getErrorInfo(): string
+    public function getErrorInfo(): ?string
     {
         return $this->errorInfo;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getErrorMessage(): string
+    public function getErrorMessage(): ?string
     {
         return $this->errorMessage;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getErrorIdentifier(): string
+    public function getErrorIdentifier(): ?string
     {
         return $this->errorIdentifier;
     }
