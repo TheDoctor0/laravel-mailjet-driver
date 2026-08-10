@@ -30,7 +30,7 @@ class MailjetException extends \Exception
      * @param Response  $response
      * @param \Throwable $previous
      */
-    public function __construct($statusCode = 0, $message = null, Response $response = null, Throwable $previous = null)
+    public function __construct($statusCode = 0, $message = null, ?Response $response = null, ?Throwable $previous = null)
     {
         if ($response) {
             $statusCode = $response->getStatus();
