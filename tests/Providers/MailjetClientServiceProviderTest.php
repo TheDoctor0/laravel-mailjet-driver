@@ -4,61 +4,24 @@ declare(strict_types=1);
 
 namespace Mailjet\LaravelMailjet\Tests\Providers;
 
-use Mockery;
-use Orchestra\Testbench\TestCase;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Foundation\Application;
-use Mailjet\LaravelMailjet\Providers\MailjetClientServiceProvider;
+use Mailjet\LaravelMailjet\Services\MailjetService;
 use Mailjet\LaravelMailjet\Contracts\MailjetServiceContract;
+use Mailjet\LaravelMailjet\Providers\MailjetClientServiceProvider;
 
-class MailjetClientServiceProviderTest extends TestCase
+class MailjetClientServiceProviderTest extends ServiceProviderTestCase
 {
-    /**
-     * @var Application|Mockery\Mock
-     */
-    protected $application;
-
-    /**
-     * @var ServiceProvider
-     */
-    protected $serviceProvider;
-
-    protected function setUp(): void
+    protected static function providerClass(): string
     {
-        $this->setUpMocks();
-
-        $this->serviceProvider = new MailjetClientServiceProvider($this->application);
-
-        parent::setUp();
+        return MailjetClientServiceProvider::class;
     }
 
-    /**
-     * @test
-     */
-    public function it_can_be_constructed(): void
+    protected static function contractClass(): string
     {
-        $this->assertInstanceOf(ServiceProvider::class, $this->serviceProvider);
+        return MailjetServiceContract::class;
     }
 
-    /**
-     * @test
-     */
-    public function it_does_provide_method(): void
+    protected static function serviceClass(): string
     {
-        $this->assertContains(MailjetServiceContract::class, $this->serviceProvider->provides());
-    }
-
-    /**
-     * @test
-     */
-    public function it_performs_nothing_in_a_boot_method(): void
-    {
-        $this->assertNull($this->serviceProvider->boot());
-    }
-
-    protected function setUpMocks(): void
-    {
-        $this->application = Mockery::mock(Application::class);
-        $this->application->shouldReceive('bind');
+        return MailjetService::class;
     }
 }

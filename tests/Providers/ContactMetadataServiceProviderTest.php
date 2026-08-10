@@ -4,61 +4,24 @@ declare(strict_types=1);
 
 namespace Mailjet\LaravelMailjet\Tests\Providers;
 
-use Mockery;
-use Orchestra\Testbench\TestCase;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Foundation\Application;
-use Mailjet\LaravelMailjet\Providers\ContactMetadataServiceProvider;
+use Mailjet\LaravelMailjet\Services\ContactMetadataService;
 use Mailjet\LaravelMailjet\Contracts\ContactMetadataContract;
+use Mailjet\LaravelMailjet\Providers\ContactMetadataServiceProvider;
 
-class ContactMetadataServiceProviderTest extends TestCase
+class ContactMetadataServiceProviderTest extends ServiceProviderTestCase
 {
-    /**
-     * @var Application|Mockery\Mock
-     */
-    protected $application;
-
-    /**
-     * @var ServiceProvider
-     */
-    protected $serviceProvider;
-
-    protected function setUp(): void
+    protected static function providerClass(): string
     {
-        $this->setUpMocks();
-
-        $this->serviceProvider = new ContactMetadataServiceProvider($this->application);
-
-        parent::setUp();
+        return ContactMetadataServiceProvider::class;
     }
 
-    /**
-     * @test
-     */
-    public function it_can_be_constructed(): void
+    protected static function contractClass(): string
     {
-        $this->assertInstanceOf(ServiceProvider::class, $this->serviceProvider);
+        return ContactMetadataContract::class;
     }
 
-    /**
-     * @test
-     */
-    public function it_does_provide_method(): void
+    protected static function serviceClass(): string
     {
-        $this->assertContains(ContactMetadataContract::class, $this->serviceProvider->provides());
-    }
-
-    /**
-     * @test
-     */
-    public function it_performs_nothing_in_a_boot_method(): void
-    {
-        $this->assertNull($this->serviceProvider->boot());
-    }
-
-    protected function setUpMocks(): void
-    {
-        $this->application = Mockery::mock(Application::class);
-        $this->application->shouldReceive('bind');
+        return ContactMetadataService::class;
     }
 }
