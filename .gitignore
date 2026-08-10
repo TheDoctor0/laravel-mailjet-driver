@@ -13,3 +13,4 @@ composer.lock
 /bin/
 
 .phpunit.result.cache
+.phpunit.cache/
