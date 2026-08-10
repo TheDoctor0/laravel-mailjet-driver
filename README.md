@@ -1,6 +1,5 @@
 # Laravel Mailjet Driver
 
-[![Build Status](https://travis-ci.org/TheDoctor0/laravel-mailjet-driver.svg?branch=master)](https://travis-ci.org/TheDoctor0/laravel-mailjet-driver)
 [![Packagist](https://img.shields.io/packagist/v/TheDoctor0/laravel-mailjet-driver.svg)](https://packagist.org/packages/TheDoctor0/laravel-mailjet-driver)
 [![Packagist](https://img.shields.io/packagist/dt/TheDoctor0/laravel-mailjet-driver.svg)](https://packagist.org/packages/TheDoctor0/laravel-mailjet-driver)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/TheDoctor0/laravel-mailjet-driver/blob/master/LICENSE.md)
@@ -9,12 +8,12 @@ Laravel mail driver package for [Mailjet](https://www.mailjet.com/). It also ser
 
 ## Installation
 
-For Laravel 9.x and 10.x which also requires Symfony Mailer:
+For Laravel 9.x and newer (up to 13.x), which use Symfony Mailer:
 ```
 composer require thedoctor0/laravel-mailjet-driver symfony/http-client
 ```
 
-In other cases:
+For Laravel 5.5 - 8.x (legacy Swift Mailer):
 ```
 composer require thedoctor0/laravel-mailjet-driver:1.0.4
 ```
@@ -26,11 +25,13 @@ You can find your Mailjet API key / secret [here](https://app.mailjet.com/accoun
 Change default mail driver and add new variables to your **.env** file:
 
 ```php
-MAIL_DRIVER=mailjet
+MAIL_MAILER=mailjet
 
 MAILJET_APIKEY=YOUR_APIKEY
 MAILJET_APISECRET=YOUR_APISECRET
 ```
+
+(On Laravel 6.x and older the variable is called `MAIL_DRIVER`.)
 
 Add section to the **config/services.php** file:
 
@@ -45,7 +46,7 @@ Make sure that in **config/mail.php** as mail sender address you are using an au
 
 Your available Mailjet email addresses and domains can be managed [here](https://app.mailjet.com/account/sender).
 
-For Laravel 7+ you also need to specify new available mail driver in **config/mail.php**:
+You also need to register the mailer in **config/mail.php**:
 
 ```php
 'mailers' => [
