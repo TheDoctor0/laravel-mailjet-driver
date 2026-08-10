@@ -8,14 +8,10 @@ Laravel mail driver package for [Mailjet](https://www.mailjet.com/). It also ser
 
 ## Installation
 
-For Laravel 9.x and newer (up to 13.x), which use Symfony Mailer:
+Supports Laravel 9.x and newer (up to 13.x):
+
 ```
 composer require thedoctor0/laravel-mailjet-driver symfony/http-client
-```
-
-For Laravel 5.5 - 8.x (legacy Swift Mailer):
-```
-composer require thedoctor0/laravel-mailjet-driver:1.0.4
 ```
 
 ## Configuration
@@ -30,8 +26,6 @@ MAIL_MAILER=mailjet
 MAILJET_APIKEY=YOUR_APIKEY
 MAILJET_APISECRET=YOUR_APISECRET
 ```
-
-(On Laravel 6.x and older the variable is called `MAIL_DRIVER`.)
 
 Add section to the **config/services.php** file:
 
